@@ -1,0 +1,433 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 46%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 224 71% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 90% 56%;
+    --radius: 0.75rem;
+    
+    /* Chart colors */
+    --chart-1: 220 90% 56%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+ 
+  .dark {
+    /* Premium Dark Theme */
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --card: 224 71% 7%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 71% 7%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 215 28% 17%;
+    --accent-foreground: 213 31% 91%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 220 90% 60%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ========================================
+   PREMIUM TABLE STYLES
+   ======================================== */
+
+/* Table Container */
+.premium-table-wrapper {
+  @apply overflow-hidden rounded-xl;
+  @apply bg-card border border-border/50;
+  @apply shadow-sm;
+}
+
+.dark .premium-table-wrapper {
+  @apply bg-card border-border/30;
+  @apply shadow-xl shadow-black/20;
+}
+
+/* Table Header */
+thead tr {
+  @apply bg-muted/50;
+}
+
+.dark thead tr {
+  @apply bg-secondary/50;
+}
+
+thead th {
+  @apply text-xs font-semibold uppercase tracking-wider;
+  @apply text-muted-foreground;
+  @apply py-4 px-4 text-left;
+  @apply border-b border-border/50;
+}
+
+.dark thead th {
+  @apply text-muted-foreground border-border/30;
+}
+
+/* Table Body */
+tbody tr {
+  @apply bg-card transition-colors duration-200;
+  @apply border-b border-border/30;
+}
+
+tbody tr:hover {
+  @apply bg-accent/50;
+}
+
+.dark tbody tr {
+  @apply bg-card border-border/20;
+}
+
+.dark tbody tr:hover {
+  @apply bg-accent/30;
+}
+
+tbody tr:last-child {
+  @apply border-b-0;
+}
+
+tbody td {
+  @apply py-4 px-4 text-sm text-foreground;
+}
+
+/* ========================================
+   PREMIUM CARD STYLES
+   ======================================== */
+
+.premium-card {
+  @apply bg-card rounded-xl;
+  @apply border border-border/50;
+  @apply shadow-sm transition-all duration-300;
+}
+
+.premium-card:hover {
+  @apply shadow-md border-border;
+}
+
+.dark .premium-card {
+  @apply bg-card border-border/30;
+  @apply shadow-lg shadow-black/10;
+}
+
+.dark .premium-card:hover {
+  @apply shadow-xl shadow-black/20 border-border/50;
+}
+
+/* ========================================
+   PREMIUM INPUT STYLES
+   ======================================== */
+
+input, textarea, select {
+  @apply bg-background border-border/50 rounded-lg;
+  @apply focus:ring-2 focus:ring-primary/20 focus:border-primary;
+  @apply transition-all duration-200;
+  @apply placeholder:text-muted-foreground/60;
+}
+
+.dark input, .dark textarea, .dark select {
+  @apply bg-secondary/50 border-border/30;
+  @apply focus:ring-primary/30 focus:border-primary;
+}
+
+/* ========================================
+   PREMIUM BUTTON STYLES
+   ======================================== */
+
+button {
+  @apply rounded-lg transition-all duration-200;
+}
+
+/* Primary button enhancement */
+.btn-primary {
+  @apply bg-primary text-primary-foreground;
+  @apply hover:bg-primary/90;
+  @apply shadow-sm hover:shadow-md;
+}
+
+.dark .btn-primary {
+  @apply hover:shadow-lg hover:shadow-primary/20;
+}
+
+/* ========================================
+   BADGE STYLES
+   ======================================== */
+
+.badge-success {
+  @apply bg-emerald-100 text-emerald-700;
+  @apply dark:bg-emerald-900/30 dark:text-emerald-400;
+}
+
+.badge-warning {
+  @apply bg-amber-100 text-amber-700;
+  @apply dark:bg-amber-900/30 dark:text-amber-400;
+}
+
+.badge-error {
+  @apply bg-red-100 text-red-700;
+  @apply dark:bg-red-900/30 dark:text-red-400;
+}
+
+.badge-info {
+  @apply bg-blue-100 text-blue-700;
+  @apply dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.badge-neutral {
+  @apply bg-slate-100 text-slate-700;
+  @apply dark:bg-slate-800 dark:text-slate-400;
+}
+
+/* ========================================
+   SCROLLBAR STYLES
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-border;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-border/30;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-border/50;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scroll for all scrollable containers */
+main, 
+.overflow-auto,
+.overflow-y-auto,
+.overflow-x-auto {
+  scroll-behavior: smooth;
+}
+
+/* Optimize tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Glass effect */
+.glass {
+  @apply bg-background/80 backdrop-blur-xl;
+  @apply border border-border/50;
+}
+
+.dark .glass {
+  @apply bg-background/60 border-border/30;
+}
+
+/* Page header styling */
+.page-header {
+  @apply mb-8;
+}
+
+.page-title {
+  @apply text-2xl sm:text-3xl font-bold text-foreground;
+}
+
+.page-description {
+  @apply text-muted-foreground mt-1;
+}
+
+/* Action bar styling */
+.action-bar {
+  @apply flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-6;
+}
+
+/* Empty state styling */
+.empty-state {
+  @apply flex flex-col items-center justify-center py-16 text-muted-foreground;
+}
+
+.empty-state-icon {
+  @apply w-16 h-16 mb-4 opacity-30;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8;
+  @apply border-2 border-primary border-t-transparent;
+}
+
+/* Stat card gradient backgrounds */
+.stat-gradient-blue {
+  @apply bg-gradient-to-br from-blue-500 to-blue-600;
+}
+
+.stat-gradient-green {
+  @apply bg-gradient-to-br from-emerald-500 to-emerald-600;
+}
+
+.stat-gradient-amber {
+  @apply bg-gradient-to-br from-amber-500 to-amber-600;
+}
+
+.stat-gradient-purple {
+  @apply bg-gradient-to-br from-purple-500 to-purple-600;
+}
+
+.stat-gradient-red {
+  @apply bg-gradient-to-br from-red-500 to-red-600;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.3s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+/* Staggered animation delays for lists */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* Hover lift effect */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Smooth card transitions */
+.card-animate {
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-animate:hover {
+  @apply transform -translate-y-0.5 shadow-md;
+}
+
+/* Sidebar transition classes */
+.sidebar-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Skeleton loading */
+.skeleton {
+  @apply bg-muted animate-pulse rounded;
+}
+
+.dark .skeleton {
+  @apply bg-secondary;
+}
